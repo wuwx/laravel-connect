@@ -1,0 +1,25 @@
+{
+    "name": "wuwx/laravel-connect",
+    "description": "",
+    "authors": [
+        {
+            "name": "wuwx",
+            "email": "wuweixin@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Wuwx\\LaravelConnect\\Providers\\ConnectServiceProvider"
+            ],
+            "aliases": {
+                
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Wuwx\\LaravelConnect\\": ""
+        }
+    }
+}
