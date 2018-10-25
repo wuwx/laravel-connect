@@ -7,13 +7,13 @@
         <title>Module LaravelConnect</title>
 
        {{-- Laravel Mix - CSS File --}}
-       {{-- <link rel="stylesheet" href="{{ mix('css/laravelconnect.css') }}"> --}}
+       {{-- <link rel="stylesheet" href="{{ mix('css/connect.css') }}"> --}}
 
     </head>
     <body>
         @yield('content')
 
         {{-- Laravel Mix - JS File --}}
-        {{-- <script src="{{ mix('js/laravelconnect.js') }}"></script> --}}
+        {{-- <script src="{{ mix('js/connect.js') }}"></script> --}}
     </body>
 </html>

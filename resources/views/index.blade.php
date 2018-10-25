@@ -1,9 +1,9 @@
-@extends('laravelconnect::layouts.master')
+@extends('connect::layouts.master')
 
 @section('content')
-    <h1>Hello World</h1>
+    <h1>{!! config('connect.name') !!}</h1>
+    @foreach($identities as $identity)
+        {{ $identity->identifier }}
+    @endforeach
 
-    <p>
-        This view is loaded from module: {!! config('laravelconnect.name') !!}
-    </p>
 @stop

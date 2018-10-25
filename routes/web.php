@@ -13,4 +13,6 @@
 
 Route::prefix('connect')->group(function() {
     Route::get('/', 'ConnectController@index');
+    Route::get('/{provider}', 'ConnectController@redirectToProvider');
+    Route::get('/{provider}/callback', 'ConnectController@handleProviderCallback');
 });
