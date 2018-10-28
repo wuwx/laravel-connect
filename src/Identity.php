@@ -2,11 +2,17 @@
 
 namespace Wuwx\LaravelConnect;
 
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Identity extends Model
 {
     protected $table = "connect_identities";
 
-    protected $fillable = [];
+    protected $fillable = ['identifier', "provider"];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

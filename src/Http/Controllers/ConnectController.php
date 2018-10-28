@@ -26,8 +26,7 @@ class ConnectController extends Controller
     public function handleProviderCallback(Request $request, $provider)
     {
         $user = Socialite::driver($provider)->user();
-        $identity = Identity::updateOrCreate(['identifier' => $user->id, 'provider' => $provider], ['data' => []]);
-        $this->guard()->login($identity);
-        return $this->authenticated($request, $identity);
+        $request->user()->identities()->updateOrCreate(['identifier' => $user->id, 'provider' => $provider], ['data' => []]);
+        return redirect()->route("connect.identities.index");
     }
 }

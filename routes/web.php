@@ -11,8 +11,12 @@
 |
 */
 
-Route::prefix('connect')->group(function() {
+Route::prefix('connect')->as("connect.")->middleware('auth')->group(function() {
     Route::get('/', 'ConnectController@index');
+
+    Route::resource('identities', 'IdentityController');
+    Route::resource('providers', 'ProviderController');
+
     Route::get('/{provider}', 'ConnectController@redirectToProvider');
     Route::get('/{provider}/callback', 'ConnectController@handleProviderCallback');
 });
