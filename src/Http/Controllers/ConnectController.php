@@ -19,6 +19,11 @@ class ConnectController extends Controller
 
     public function redirectToProvider(Request $request, $provider)
     {
+        config(["services.$provider" => [
+            'client_id' => '',
+            'client_secret' => '',
+            'redirect' => '',
+        ]]);
         return Socialite::driver($provider)
             ->redirectUrl(app('url')->to("/connect/{$provider}/callback"))
             ->redirect();

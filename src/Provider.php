@@ -9,4 +9,8 @@ class Provider extends Model
     protected $table = "connect_providers";
 
     protected $fillable = [];
+
+    protected $casts = [
+        'options' => 'json',
+    ];
 }
