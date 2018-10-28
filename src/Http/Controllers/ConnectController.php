@@ -20,14 +20,22 @@ class ConnectController extends Controller
     public function redirectToProvider(Request $request, $provider)
     {
         return Socialite::driver($provider)
-            ->redirectUrl(http_build_url($request->fullUrl(), ["path" => "$provider/callback"], HTTP_URL_JOIN_PATH))
+            ->redirectUrl(app('url')->to("/connect/{$provider}/callback"))
             ->redirect();
     }
 
     public function handleProviderCallback(Request $request, $provider)
     {
         $user = Socialite::driver($provider)->user();
-        $request->user()->identities()->updateOrCreate(['identifier' => $user->id, 'provider' => $provider], ['data' => []]);
-        return redirect()->route("connect.identities.index");
+
+        Identity::where(['provider' => $provider, 'identifier' => $user->id])->delete();
+        Identity::where(['user_id' => $request->user()->id, 'provider' => $provider])->delete();
+
+        $identity = Identity::make(['provider' => $provider, 'identifier' => $user->id, 'data' => []]);
+        $identity->user_id = $request->user()->id;
+        $identity->save();
+
+        return redirect("/connect");
+
     }
 }

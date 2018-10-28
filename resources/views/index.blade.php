@@ -6,13 +6,32 @@
             Connect
         </div>
         <div class="card-body">
-            <h5 class="card-title">Providers</h5>
-
             <table class="table">
+                <thead>
+                    <tr>
+                        <th>Provider</th>
+                        <th>Identifier</th>
+                        <th></th>
+                    </tr>
+                </thead>
                 @foreach($providers as $provider)
                     <tr>
                         <td>{{ $provider->name }}</td>
-                        <td><a href="{{ $provider->name }}" class="btn btn-primary">Connect</a></td>
+
+                        @if ($identity = Auth::user()->identities()->where('provider', $provider->name)->first())
+                            <td>
+                                {{ $identity->identifier }}
+                            </td>
+                            <td width="100">
+                                <a href="{{ route("connect.identities.destroy", $identity) }}" data-method="DELETE" class="btn btn-danger">Disconnect</a>
+                            </td>
+                        @else
+                            <td>
+                            </td>
+                            <td width="100">
+                                <a href="{{ app('url')->to("/connect/{$provider->name}") }}" class="btn btn-primary">Connect</a>
+                            </td>
+                        @endif
                     </tr>
                 @endforeach
             </table>
