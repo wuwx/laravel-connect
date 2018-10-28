@@ -14,6 +14,6 @@ class ConnectDatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        // $this->call("OthersTableSeeder");
+        $this->call(ConnectProvidersTableSeeder::class);
     }
 }

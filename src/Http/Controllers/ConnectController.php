@@ -7,13 +7,14 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Laravel\Socialite\Facades\Socialite;
 use Wuwx\LaravelConnect\Identity;
+use Wuwx\LaravelConnect\Provider;
 
 class ConnectController extends Controller
 {
     public function index()
     {
-        $identities = [];
-        return view('connect::index', compact('identities'));
+        $providers = Provider::all();
+        return view('connect::index', compact('providers'));
     }
 
     public function redirectToProvider(Request $request, $provider)
