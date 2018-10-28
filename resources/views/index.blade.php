@@ -18,7 +18,7 @@
                     <tr>
                         <td>{{ $provider->name }}</td>
 
-                        @if ($identity = Auth::user()->identities()->where('provider', $provider->name)->first())
+                        @if ($identity = \Wuwx\LaravelConnect\Identity::where(['user_id' => Auth::user()->id, 'provider' => $provider->name])->first())
                             <td>
                                 {{ $identity->identifier }}
                             </td>
