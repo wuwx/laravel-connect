@@ -35,6 +35,7 @@ class ConnectServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->register(NovaServiceProvider::class);
         $this->app->register(RouteServiceProvider::class);
     }
 

@@ -13,34 +13,41 @@ class ConnectController extends Controller
 {
     public function index()
     {
-        $providers = Provider::all();
+        $providers = Provider::where(['enabled' => true])->get();
         return view('connect::index', compact('providers'));
     }
 
-    public function redirectToProvider(Request $request, $provider)
+    public function redirectToProvider(Request $request, $name)
     {
-        config(["services.$provider" => [
-            'client_id' => '',
-            'client_secret' => '',
-            'redirect' => '',
-        ]]);
-        return Socialite::driver($provider)
-            ->redirectUrl(app('url')->to("/connect/{$provider}/callback"))
-            ->redirect();
+        $provider = Provider::where(['enabled' => true, 'name' => $name])->first();
+        if ($provider) {
+            config(["services.$name" => $provider->options]);
+            return Socialite::driver($name)
+                ->redirectUrl(app('url')->to("/connect/{$name}/callback"))
+                ->redirect();
+        } else {
+            return response("Not Found", 404);
+        }
+
     }
 
-    public function handleProviderCallback(Request $request, $provider)
+    public function handleProviderCallback(Request $request, $name)
     {
-        $user = Socialite::driver($provider)->user();
+        $provider = Provider::where(['enabled' => true, 'name' => $name])->first();
+        if ($provider) {
+            config(["services.$name" => $provider->options]);
+            $user = Socialite::driver($name)->user();
 
-        Identity::where(['provider' => $provider, 'identifier' => $user->id])->delete();
-        Identity::where(['user_id' => $request->user()->id, 'provider' => $provider])->delete();
+            Identity::where(['provider' => $name, 'identifier' => $user->id])->delete();
+            Identity::where(['user_id' => $request->user()->id, 'provider' => $name])->delete();
 
-        $identity = Identity::make(['provider' => $provider, 'identifier' => $user->id, 'data' => []]);
-        $identity->user_id = $request->user()->id;
-        $identity->save();
+            $identity = Identity::make(['provider' => $name, 'identifier' => $user->id, 'data' => []]);
+            $identity->user_id = $request->user()->id;
+            $identity->save();
 
-        return redirect("/connect");
-
+            return redirect("/connect");
+        } else {
+            return response("Not Found", 404);
+        }
     }
 }
