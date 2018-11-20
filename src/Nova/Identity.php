@@ -2,8 +2,10 @@
 
 namespace Wuwx\LaravelConnect\Nova;
 
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Identity extends Resource
@@ -41,6 +43,9 @@ class Identity extends Resource
     {
         return [
             ID::make()->sortable(),
+            Text::make('identifier'),
+            Text::make('provider'),
+            DateTime::make('created_at'),
         ];
     }
 

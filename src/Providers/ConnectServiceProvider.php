@@ -2,8 +2,11 @@
 
 namespace Wuwx\LaravelConnect\Providers;
 
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Wuwx\LaravelConnect\Policies\IdentityPolicy;
+use Wuwx\LaravelConnect\Policies\ProviderPolicy;
 
 class ConnectServiceProvider extends ServiceProvider
 {
@@ -26,6 +29,9 @@ class ConnectServiceProvider extends ServiceProvider
         $this->registerViews();
         $this->registerFactories();
         $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
+
+        Gate::policy('Wuwx\LaravelConnect\Identity', IdentityPolicy::class);
+        Gate::policy('Wuwx\LaravelConnect\Provider', ProviderPolicy::class);
     }
 
     /**

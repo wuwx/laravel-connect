@@ -17,6 +17,7 @@ class CreateConnectIdentitiesTable extends Migration
             $table->increments('id');
             $table->string("identifier");
             $table->string("provider");
+            $table->json("data")->nullable();
             $table->integer("user_id");
             $table->timestamps();
         });

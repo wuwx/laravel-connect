@@ -41,7 +41,8 @@ class ConnectController extends Controller
             Identity::where(['provider' => $name, 'identifier' => $user->id])->delete();
             Identity::where(['user_id' => $request->user()->id, 'provider' => $name])->delete();
 
-            $identity = Identity::make(['provider' => $name, 'identifier' => $user->id, 'data' => []]);
+            $identity = Identity::make(['provider' => $name, 'identifier' => $user->id]);
+            $identity->data = $user->getRaw();
             $identity->user_id = $request->user()->id;
             $identity->save();
 

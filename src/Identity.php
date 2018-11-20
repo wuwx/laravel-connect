@@ -11,6 +11,10 @@ class Identity extends Model
 
     protected $fillable = ['identifier', "provider"];
 
+    protected $casts = [
+        'data' => 'json',
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);

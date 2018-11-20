@@ -17,6 +17,7 @@ class CreateConnectProvidersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->boolean('enabled')->default(0);
+            $table->string('driver')->nullable();
             $table->json('options')->nullable();
             $table->timestamps();
         });
