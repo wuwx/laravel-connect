@@ -28,10 +28,12 @@ class NovaServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        Nova::resources([
-            Identity::class,
-            Provider::class,
-        ]);
+        if (class_exists(Nova::class)) {
+            Nova::resources([
+                Identity::class,
+                Provider::class,
+            ]);
+        }
     }
 
     /**
