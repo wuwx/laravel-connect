@@ -22,6 +22,7 @@ class IdentityController extends Controller
     public function destroy(Request $request, $id)
     {
         Identity::where(['user_id' => $request->user()->id, 'id' => $id])->delete();
+        session()->put('danger', '身份绑定已解除！');
         return redirect("/connect");
     }
 }
