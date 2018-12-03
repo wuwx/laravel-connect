@@ -13,4 +13,9 @@ class Provider extends Model
     protected $casts = [
         'options' => 'json',
     ];
+
+    public function identities()
+    {
+        return $this->hasMany(Identity::class, 'provider', 'name');
+    }
 }
