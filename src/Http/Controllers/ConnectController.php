@@ -26,7 +26,7 @@ class ConnectController extends Controller
                 ->redirectUrl(app('url')->to("/connect/{$name}/callback"))
                 ->redirect();
         } else {
-            return response("Not Found", 404);
+            return abort(404);
         }
 
     }
@@ -48,7 +48,7 @@ class ConnectController extends Controller
 
             return redirect("/connect");
         } else {
-            return response("Not Found", 404);
+            return abort(404);
         }
     }
 }
