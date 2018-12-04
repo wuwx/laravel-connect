@@ -8,7 +8,7 @@ class Provider extends Model
 {
     protected $table = "connect_providers";
 
-    protected $fillable = ['name', 'title', 'options'];
+    protected $fillable = ['enabled', 'name', 'icon', 'title', 'options'];
 
     protected $casts = [
         'options' => 'json',

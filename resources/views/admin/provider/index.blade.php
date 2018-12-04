@@ -16,7 +16,10 @@
             <table class="table table-bordered table-striped table-hover">
                 <thead>
                 <tr>
+                    <th>启用</th>
                     <th>名称</th>
+                    <th>图标</th>
+                    <th>标题</th>
                     <th>类名</th>
                     <th width="80"></th>
                 </tr>
@@ -24,7 +27,10 @@
                 <tbody>
                 @foreach($providers as $provider)
                     <tr>
+                        <td>{{ $provider->enabled }}</td>
                         <td>{{ $provider->name }}</td>
+                        <td>{{ $provider->icon }}</td>
+                        <td>{{ $provider->title }}</td>
                         <td>{{ $provider->driver }}</td>
                         <td>
                             <a href="{{ route('connect.admin.providers.edit', $provider) }}" class="btn btn-default btn-sm">编辑</a>

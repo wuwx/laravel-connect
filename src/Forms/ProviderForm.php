@@ -8,8 +8,19 @@ class ProviderForm extends Form
 {
     public function buildForm()
     {
+        $this->add('enabled', 'select', [
+            'label' => '启用', 'attr' => ['class' => 'form-control'],
+            'rules' => 'required',
+            'choices' => ['1' => '启用', '0' => '禁用'],
+        ]);
+
         $this->add('name', 'text', [
             'label' => '名称', 'attr' => ['class' => 'form-control'],
+            'rules' => 'required',
+        ]);
+
+        $this->add('icon', 'text', [
+            'label' => '图标', 'attr' => ['class' => 'form-control'],
             'rules' => 'required',
         ]);
 
