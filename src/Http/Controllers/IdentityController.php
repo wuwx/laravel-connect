@@ -19,10 +19,10 @@ class IdentityController extends Controller
         return view('connect::identity.index', compact('identities'));
     }
 
-    public function destroy(Request $request, $id)
+    public function destroy(Request $request, Identity $identity)
     {
-        Identity::where(['user_id' => $request->user()->id, 'id' => $id])->delete();
+        $identity->delete();
         session()->put('danger', '身份绑定已解除！');
-        return redirect("/connect");
+        return redirect()->route("connect.providers.show", $identity->provider);
     }
 }

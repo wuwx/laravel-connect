@@ -32,7 +32,7 @@ class ProviderForm extends Form
         $this->add('options', 'form', [
             'class' => $this->formBuilder->plain()->add('client_id', 'text')
                                                   ->add('client_secret', 'text')
-                                                  ->add('redirect_url', 'text')
+                                                  ->add('redirect', 'text')
         ]);
 
         $this->add('submit', 'submit', [

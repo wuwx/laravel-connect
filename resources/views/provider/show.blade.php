@@ -25,7 +25,7 @@
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     @if ($identity)
-                        <a href="{{ url("/connect/{$provider->name}") }}" data-method="DELETE" class="btn btn-danger">解除</a>
+                        <a href="{{ route("connect.identities.destroy", $identity) }}" data-method="DELETE" class="btn btn-danger">解除</a>
                     @else
                         <a href="{{ url("/connect/{$provider->name}") }}" class="btn btn-primary">关联</a>
                     @endif
