@@ -16,6 +16,7 @@ class CreateConnectProvidersTable extends Migration
         Schema::create('connect_providers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('icon')->nullable();
             $table->string('title')->nullable();
             $table->boolean('enabled')->default(0);
             $table->string('driver')->nullable();
