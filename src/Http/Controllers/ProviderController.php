@@ -15,8 +15,9 @@ class ProviderController extends Controller
         return view('connect::provider.index');
     }
 
-    public function show(Provider $provider)
+    public function show($name)
     {
+        $provider = Provider::whereName($name)->firstOrFail();
         return view('connect::provider.show', compact('provider'));
     }
 

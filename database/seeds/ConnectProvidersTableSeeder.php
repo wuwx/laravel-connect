@@ -21,6 +21,6 @@ class ConnectProvidersTableSeeder extends Seeder
         Provider::create(['name' => 'linkedin']);
         Provider::create(['name' => 'facebook']);
         Provider::create(['name' => 'bitbucket']);
-        Provider::create(['name' => 'gitlab', 'options' => ['client_id' => '11111111', 'client_secret' => '22222222', 'redirect' => '33333333']]);
+        Provider::create(['name' => 'gitlab', 'enabled' => true, 'options' => ['client_id' => '11111111', 'client_secret' => '22222222', 'redirect' => '33333333']]);
     }
 }

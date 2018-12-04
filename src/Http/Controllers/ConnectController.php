@@ -46,7 +46,7 @@ class ConnectController extends Controller
             $identity->user_id = $request->user()->id;
             $identity->save();
 
-            return redirect("/connect");
+            return redirect(route("connect.providers.show", $name));
         } else {
             return abort(404);
         }
