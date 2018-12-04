@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Http\Controllers\Profile;
+namespace Wuwx\LaravelConnect\Tests\Http\Controllers;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;

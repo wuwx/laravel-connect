@@ -1,19 +1,29 @@
 {
     "name": "wuwx/laravel-connect",
     "description": "",
+    "homepage": "https://github.com/wuwx/laravel-connect",
+    "keywords": [
+        "wuwx",
+        "larave",
+        "connect"
+    ],
     "authors": [
         {
             "name": "wuwx",
             "email": "wuweixin@gmail.com"
         }
     ],
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "license": "MIT",
     "extra": {
         "laravel": {
             "providers": [
                 "Wuwx\\LaravelConnect\\Providers\\ConnectServiceProvider"
             ],
             "aliases": {
-                
+
             }
         }
     },
@@ -23,10 +33,22 @@
             "database/factories"
         ],
         "psr-4": {
-            "Wuwx\\LaravelConnect\\": ""
+            "Wuwx\\LaravelConnect\\": "src"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Wuwx\\LaravelConnect\\Tests\\": "tests"
         }
     },
     "require": {
-        "laravel/socialite": "^3.2"
+        "laravel/socialite": "^3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.4",
+        "orchestra/testbench": "~3.5.0|~3.6.0|~3.7.0"
     }
 }
