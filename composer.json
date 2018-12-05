@@ -4,8 +4,9 @@
     "homepage": "https://github.com/wuwx/laravel-connect",
     "keywords": [
         "wuwx",
-        "larave",
-        "connect"
+        "laravel",
+        "connect",
+        "socialite"
     ],
     "authors": [
         {
