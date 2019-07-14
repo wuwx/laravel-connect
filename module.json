@@ -1,0 +1,14 @@
+{
+    "name": "LaravelConnect",
+    "alias": "laravel-connect",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Wuwx\\LaravelConnect\\Providers\\ConnectServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
