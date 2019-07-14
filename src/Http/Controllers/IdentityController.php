@@ -23,6 +23,6 @@ class IdentityController extends Controller
     {
         $identity->delete();
         session()->put('danger', '身份绑定已解除！');
-        return redirect()->route("connect.providers.show", $identity->provider);
+        return redirect()->route("connect.identities.index");
     }
 }
